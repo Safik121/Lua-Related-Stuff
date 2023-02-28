@@ -19,5 +19,5 @@ while true do
     local clone = item:Clone()
 
     clone.Parent = workspace
-    clone.Handle.CFrame = _spawn.CFrame * CFrame.new(0,2.5,0)
+    clone.Handle.CFrame = _spawn.CFrame * CFrame.new(0,2,0)
 end
