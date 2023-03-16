@@ -1,3 +1,4 @@
+-- important variables
 local tycoon = script.Parent.Parent.Parent
 local module = require(tycoon.Parent.Parent.Settings)
 local tcnInfo = tycoon:WaitForChild("TycoonInfo")
