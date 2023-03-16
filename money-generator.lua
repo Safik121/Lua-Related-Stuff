@@ -1,8 +1,8 @@
 -- important variables
-local tycoon = script.Parent.Parent.Parent
+local tycoon = script.Parent.Parent.Parent -- connects to current tycoon
 local module = require(tycoon.Parent.Parent.Settings) -- this variables refers to module script called settings that is saved 2 places above "tycoon" in the hierarchy
-local tcnInfo = tycoon:WaitForChild("TycoonInfo")
-local MarketplaceService = game:GetService("MarketplaceService")
+local tcnInfo = tycoon:WaitForChild("TycoonInfo") -- this variable reads "TycoonInfo" which contains many different information but the most important is who the owner of current tycoon is
+local MarketplaceService = game:GetService("MarketplaceService") -- connects to roblox marketplace and enables gamepasses for this code
 
 -- define how often cash is generated
 local generationInterval = 1
