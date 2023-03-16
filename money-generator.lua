@@ -1,6 +1,6 @@
 -- important variables
 local tycoon = script.Parent.Parent.Parent
-local module = require(tycoon.Parent.Parent.Settings)
+local module = require(tycoon.Parent.Parent.Settings) -- this variables refers to module script called settings that is saved 2 places above "tycoon" in the hierarchy
 local tcnInfo = tycoon:WaitForChild("TycoonInfo")
 local MarketplaceService = game:GetService("MarketplaceService")
 
