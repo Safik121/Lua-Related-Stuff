@@ -5,6 +5,6 @@ local rootpart = character:WaitForChild("RootPart")
 local leaderboard = character:WaitForChild("leaderstats")
 local bool = true
 while bool do
-  print(leaderboard)
+  print(leaderboard.Value)
   wait(1)
 end
