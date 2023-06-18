@@ -10,11 +10,10 @@ local function PlaceRandomDots()
 
 	placingDots = true
 
-	local dotSize = Vector3.new(0.3, 0.3, 0.3)
+	local dotSize = Vector3.new(0.05, 0.05, 0.05)
 	local dotLifetime = 60
-	local areaSize = 10 
-	local dotsPerIteration = 30 
-	local delayBetweenDots = 0.01
+	local initialAreaSize = 10
+	local dotsPerIteration = 20
 
 	local function CreateDot(position, color)
 		local dot = Instance.new("Part")
@@ -35,7 +34,12 @@ local function PlaceRandomDots()
 	end
 
 	while placingDots do
-		for _ = 1, dotsPerIteration do
+		local areaSize = initialAreaSize -- Adjusted area size
+
+		-- Adjust the number of dots based on the ratio of the new area size to the initial area size
+		local adjustedDotsPerIteration = math.floor(dotsPerIteration * (areaSize / initialAreaSize))
+
+		for _ = 1, adjustedDotsPerIteration do
 			local randomOffset = Vector3.new(
 				math.random(-areaSize / 2, areaSize / 2),
 				math.random(-areaSize / 2, areaSize / 2),
@@ -43,21 +47,19 @@ local function PlaceRandomDots()
 			)
 
 			local dotPosition = camera.CFrame.Position + camera.CFrame.LookVector * 10 + randomOffset
-			local ray = Ray.new(dotPosition, camera.CFrame.LookVector * 100) 
+			local ray = Ray.new(dotPosition, camera.CFrame.LookVector * 100)
 
 			local hitPart, hitPosition, hitNormal = workspace:FindPartOnRayWithIgnoreList(ray, {player.Character})
 
 			if hitPart then
 				if hitPart.Name == "BLOK" then
 					CreateDot(hitPosition + (hitNormal * 0.1), "Bright blue")
-				elseif hitPart:IsDescendantOf(workspace.John) then
+				elseif hitPart:IsDescendantOf(workspace.John) or hitPart.Name == "John" then
 					CreateDot(hitPosition + (hitNormal * 0.1), "Really red")
 				else
 					CreateDot(hitPosition + (hitNormal * 0.1), "White")
 				end
 			end
-
-			wait(delayBetweenDots) 
 		end
 
 		wait() 
