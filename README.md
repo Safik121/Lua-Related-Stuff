@@ -1,2 +1,1 @@
-Contains my/borrowed lua codes
-!Mostly mine! >:)
+Roblox scripts written in Luau (roblox version of Lua)
